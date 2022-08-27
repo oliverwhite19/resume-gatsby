@@ -34,7 +34,9 @@ export const Head = () => {
 export default IndexPage;
 export const query = graphql`
   query IndexPage {
-    allMongodbEmployment {
+    allMongodbEmployment(
+      sort: { fields: positions___employment___positions___start, order: DESC }
+    ) {
       nodes {
         ...Employment
       }
