@@ -79,16 +79,3 @@ const Layout = ({ children }: PageProps) => {
 };
 
 export default Layout;
-
-export function Head(props: HeadProps<any>) {
-  return <title>{props.data.site.siteMetadata.title}</title>;
-}
-export const query = graphql`
-  {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
