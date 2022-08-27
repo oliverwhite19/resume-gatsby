@@ -7,6 +7,7 @@ import { screenSizes } from "../../theme";
 import { useState } from "react";
 import { ContactModal } from "./ContactModal";
 import { useMediaQuery } from "@mantine/hooks";
+import { StaticImage } from "gatsby-plugin-image";
 
 const Header = ({ withDescription }: { withDescription: boolean }) => {
   const { classes } = useStyles();
@@ -62,14 +63,16 @@ const Header = ({ withDescription }: { withDescription: boolean }) => {
               </Button>
             </div>
             <div className={classes.avatarContainer}>
-              <Avatar
-                radius="xl"
-                size="xl"
-                color="red"
-                src="static/author_.png"
-                alt="A picture of me!"
-                sx={{ img: { height: "84px", width: "84px" } }}
-              />
+              <Avatar radius="xl" size="xl" color="red">
+                <StaticImage
+                  src="../../static/images/author_.png"
+                  alt="A picture of me!"
+                  placeholder="blurred"
+                  layout="fixed"
+                  width={84}
+                  height={84}
+                />
+              </Avatar>
               <P>
                 I am Oliver White and I am a Software Developer with 5 years of
                 experience leading and contributing to a wide variety of

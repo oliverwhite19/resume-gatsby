@@ -10,9 +10,14 @@ import * as React from "react";
 import { Resume } from "../components/Resume/Resume";
 import { theme } from "../theme";
 
-import "../../public/fonts/Oxygen.css";
-import "../../public/fonts/Cairo.css";
-import "../../public/fonts/Amiko.css";
+import "../static/fonts/Oxygen.css";
+import "../static/fonts/Cairo.css";
+import "../static/fonts/Amiko.css";
+import { graphql, PageProps } from "gatsby";
+
+type Mutable<Type> = {
+  -readonly [Key in keyof Type]: Type[Key];
+};
 
 function MyGlobalStyles() {
   return (
@@ -52,8 +57,7 @@ const Layout = styled("div")`
     padding: 52px 1.3125rem 100px 1.3125rem;
   }
 `;
-
-const IndexPage = () => {
+const IndexPage = ({ data }: PageProps<Queries.IndexPageQuery>) => {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
     defaultValue: "light",
@@ -74,7 +78,18 @@ const IndexPage = () => {
       >
         <MyGlobalStyles />
         <Layout>
-          <Resume employment={[]} education={[]} />
+          <Resume
+            employment={
+              data.allMongodbEmployment.nodes as Mutable<
+                Queries.EmploymentFragment[]
+              >
+            }
+            education={
+              data.allMongodbEducation.nodes as Mutable<
+                Queries.EducationFragment[]
+              >
+            }
+          />
         </Layout>
       </MantineProvider>
     </ColorSchemeProvider>
@@ -82,3 +97,42 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query IndexPage {
+    allMongodbEmployment {
+      nodes {
+        ...Employment
+      }
+    }
+    allMongodbEducation {
+      nodes {
+        ...Education
+      }
+    }
+  }
+
+  fragment Education on mongodbEducation {
+    end
+    description
+    link
+    title
+  }
+
+  fragment Position on mongodbPosition {
+    title
+    technologies
+    start
+    end
+    details
+  }
+
+  fragment Employment on mongodbEmployment {
+    positions {
+      ...Position
+    }
+    company
+    descriptor
+    companyLink
+  }
+`;

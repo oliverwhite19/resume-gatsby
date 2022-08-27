@@ -1,8 +1,11 @@
 import * as React from "react";
-import type { Education as EducationType } from "prisma/generated/client";
 import { Paper } from "../Resume/Paper";
 
-const Education = ({ education }: { education: EducationType[] }) => {
+const Education = ({
+  education,
+}: {
+  education: Queries.EducationFragment[];
+}) => {
   return (
     <>
       <h2>Education</h2>

@@ -1,9 +1,11 @@
 import type { GatsbyConfig } from "gatsby";
-
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Resume - Gatsby`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://www.oliverwhite.cs`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -12,23 +14,10 @@ const config: GatsbyConfig = {
   plugins: [
     "gatsby-plugin-mantine",
     "gatsby-plugin-emotion",
-    {
-      resolve: "gatsby-plugin-google-analytics",
-      options: {
-        trackingId: "G-63NXPNYZRR",
-      },
-    },
-    "gatsby-plugin-image",
-    "gatsby-plugin-sitemap",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/icon.png",
-      },
-    },
     "gatsby-plugin-mdx",
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -44,6 +33,21 @@ const config: GatsbyConfig = {
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: `gatsby-source-mongodb`,
+      options: {
+        dbName: process.env.DATABASE_NAME,
+        typePrefix: "",
+        connectionString: process.env.DATABASE_URL,
+        collection: [`Employment`, `Position`, `Education`],
+        extraParams: {
+          ssl: true,
+          authSource: "admin",
+          retryWrites: true,
+        },
+        preserveObjectIds: true,
+      },
     },
   ],
 };

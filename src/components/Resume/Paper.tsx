@@ -4,7 +4,6 @@ import { P } from "../Text";
 import { useStyles } from "./Resume.styles";
 import styled from "@emotion/styled";
 import { Position } from "./Position";
-import type { Position as PositionType } from "prisma/generated/client";
 
 const CenteredP = styled(P)`
   text-align: center;
@@ -14,7 +13,7 @@ interface Props {
   link: string;
   title: string;
   description: string;
-  positions?: PositionType[];
+  positions?: Queries.PositionFragment[] | null;
 }
 
 const Paper = ({ link, title, description, positions }: Props) => {

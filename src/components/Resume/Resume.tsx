@@ -8,8 +8,8 @@ const Resume = ({
   employment,
   education,
 }: {
-  employment: any[];
-  education: any[];
+  employment: Queries.EmploymentFragment[];
+  education: Queries.EducationFragment[];
 }) => {
   const { classes } = useStyles();
   return (

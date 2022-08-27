@@ -1,11 +1,10 @@
 import * as React from "react";
-import { EmploymentWithPositions } from "../../types";
 import { Job } from "../Resume/Job";
 
 const WorkExperience = ({
   employment,
 }: {
-  employment: EmploymentWithPositions[];
+  employment: Queries.EmploymentFragment[];
 }) => {
   return (
     <>
