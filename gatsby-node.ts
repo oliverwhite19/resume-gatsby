@@ -1,7 +1,3 @@
-exports.onPostBuild = ({ reporter }) => {
-  console.log(`Your Gatsby site has been built!`);
-  reporter.info(`Your Gatsby site has been built!`);
-};
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `

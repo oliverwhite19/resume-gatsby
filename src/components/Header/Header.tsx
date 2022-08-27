@@ -38,7 +38,7 @@ const Header = ({ withDescription }: { withDescription: boolean }) => {
           <>
             <div className={classes.buttonContainer}>
               <a
-                href="/files/OliverWhiteResume.pdf"
+                href="/documents/OliverWhiteResume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
               >

@@ -29,12 +29,14 @@
     "gatsby-plugin-mantine": "^5.0.0",
     "gatsby-plugin-mdx": "^4.0.0",
     "gatsby-plugin-sharp": "^4.21.0",
+    "gatsby-plugin-use-dark-mode": "^1.5.0",
     "gatsby-source-filesystem": "^4.21.1",
     "gatsby-source-mongodb": "^4.21.0",
     "gatsby-transformer-sharp": "^4.21.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "tabler-icons-react": "^1.54.0"
+    "tabler-icons-react": "^1.54.0",
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",

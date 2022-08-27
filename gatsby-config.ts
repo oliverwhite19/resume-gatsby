@@ -4,8 +4,9 @@ require("dotenv").config({
 });
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Resume - Gatsby`,
-    siteUrl: `https://www.oliverwhite.cs`,
+    title: "Oliver White - Resume",
+    image: "/images/favicon.ico",
+    siteUrl: "https://www.oliverwhite.ca",
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -15,17 +16,10 @@ const config: GatsbyConfig = {
     "gatsby-plugin-mantine",
     "gatsby-plugin-emotion",
     "gatsby-plugin-mdx",
-    `gatsby-plugin-image`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-use-dark-mode",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -35,12 +29,12 @@ const config: GatsbyConfig = {
       __key: "pages",
     },
     {
-      resolve: `gatsby-source-mongodb`,
+      resolve: "gatsby-source-mongodb",
       options: {
         dbName: process.env.DATABASE_NAME,
         typePrefix: "",
         connectionString: process.env.DATABASE_URL,
-        collection: [`Employment`, `Position`, `Education`],
+        collection: ["Employment", "Position", "Education"],
         extraParams: {
           ssl: true,
           authSource: "admin",
@@ -50,7 +44,7 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: "Oliver White Resume",
         short_name: "OWResume",
