@@ -10,9 +10,9 @@ import * as React from "react";
 import { Resume } from "../components/Resume/Resume";
 import { theme } from "../theme";
 
-import "../static/fonts/Oxygen.css";
-import "../static/fonts/Cairo.css";
-import "../static/fonts/Amiko.css";
+import "../styles/fonts/Oxygen.css";
+import "../styles/fonts/Cairo.css";
+import "../styles/fonts/Amiko.css";
 import { graphql, PageProps } from "gatsby";
 
 type Mutable<Type> = {
