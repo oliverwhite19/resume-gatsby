@@ -1,54 +1,50 @@
 <p align="center">
   <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+    <img alt="Gatsby" src="./static/images/author_.png" width="60" />
   </a>
 </p>
 <h1 align="center">
-  Resume - Gatsby Version
+  Oliver White Resume
 </h1>
+<h2>Gatsby Version</h2>
 
-## 🚀 Quick start
+This is the repository containing the Gatsby version of my resume website. So far I have built three versions of my resume and linktree page:
 
-1.  **Create a Gatsby site.**
+- [GatsbyJS](https://gatsby.oliverwhite.ca)
+- [Remix](https://remix.oliverwhite.ca)
+- [NextJS](https://next.oliverwhite.ca)
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+The principal reason for these versions is to test out the capabilities of these frameworks and put them through their paces.
+
+One of these versions is also present at https://oliverwhite.ca.
+
+## 🚀 Development
+
+1.  **Clone this repository.**
 
     ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
+    git clone https://github.com/oliverwhite19/resume-gatsby.git
     ```
 
-2.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
+2.  **Add your env variables**
+    Navigate into the sites directory and create an environment file
 
     ```shell
-    cd my-gatsby-site/
-    npm run develop
+    cd resume-gatsby
+    touch .env.development
     ```
 
-3.  **Open the code and start customizing!**
+    This is a template for that environment file
 
-    Your site is now running at http://localhost:8000!
+    ```
+    DATABASE_URL=''
+    DATABASE_NAME=''
+    ```
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+3.  **Start developing.**
+    Install packages and launch the site
 
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+    ```shell
+    yarn
+    yarn develop
+    ```
