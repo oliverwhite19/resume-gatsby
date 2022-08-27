@@ -8,6 +8,14 @@ import { useState } from "react";
 import { ContactModal } from "./ContactModal";
 import { useMediaQuery } from "@mantine/hooks";
 import { StaticImage } from "gatsby-plugin-image";
+import styled from "@emotion/styled";
+
+const Image = styled(StaticImage)`
+  img {
+    width: 84px !important;
+    height: 84px !important;
+  }
+`;
 
 const Header = ({ withDescription }: { withDescription: boolean }) => {
   const { classes } = useStyles();
@@ -63,11 +71,18 @@ const Header = ({ withDescription }: { withDescription: boolean }) => {
               </Button>
             </div>
             <div className={classes.avatarContainer}>
-              <Avatar radius="xl" size="xl" color="red">
+              <Avatar
+                radius="xl"
+                size="xl"
+                color="red"
+                sx={{
+                  img: { height: "84px", width: "84px" },
+                  ".gatsby-image-wrapper": { overflow: "initial" },
+                }}
+              >
                 <StaticImage
                   src="../../../static/images/author_.png"
                   alt="A picture of me!"
-                  placeholder="blurred"
                   layout="fixed"
                   width={84}
                   height={84}
