@@ -20,17 +20,10 @@ One of these versions is also present at https://oliverwhite.ca.
 
 ## 🚀 Development
 
-1.  **Clone this repository.**
-
-    ```shell
-    git clone https://github.com/oliverwhite19/resume-gatsby.git
-    ```
-
-2.  **Add your env variables**
+1.  **Add your env variables**
     Navigate into the sites directory and create an environment file
 
     ```shell
-    cd resume-gatsby
     touch .env.development
     ```
 
@@ -41,10 +34,9 @@ One of these versions is also present at https://oliverwhite.ca.
     DATABASE_NAME=''
     ```
 
-3.  **Start developing.**
+2.  **Start developing.**
     Install packages and launch the site
 
     ```shell
-    yarn
-    yarn develop
+    yarn && yarn develop
     ```
