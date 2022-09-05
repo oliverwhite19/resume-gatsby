@@ -106,7 +106,6 @@ const Header = ({ description }: { description?: string }) => {
         }
         overlayOpacity={0.7}
         overlayBlur={9}
-        fullScreen
       >
         <ContactModal />
       </Modal>
