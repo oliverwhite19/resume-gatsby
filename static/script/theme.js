@@ -1,6 +1,7 @@
 (function () {
   function setTheme(newTheme) {
     document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("mantine-color-scheme", JSON.stringify(newTheme));
   }
   var preferredTheme;
   try {
