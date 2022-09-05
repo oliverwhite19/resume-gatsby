@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Resume } from "../components/Resume/Resume";
-import { graphql, HeadProps, PageProps } from "gatsby";
+import { graphql, PageProps, Script } from "gatsby";
 
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Type[Key];

@@ -7,6 +7,7 @@ import {
   FilePower,
 } from "tabler-icons-react";
 import { Header } from "../components/Header/Header";
+import { Script } from "gatsby";
 
 export default function Index() {
   return (

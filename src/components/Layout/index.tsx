@@ -7,39 +7,9 @@ import {
 } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 import * as React from "react";
-
-import "../../styles/fonts/Oxygen.css";
-import "../../styles/fonts/Cairo.css";
-import "../../styles/fonts/Amiko.css";
-import { graphql, HeadProps, PageProps } from "gatsby";
+import { PageProps } from "gatsby";
 import { theme } from "../../theme";
-
-function MyGlobalStyles() {
-  return (
-    <Global
-      styles={(theme) => ({
-        "*, *::before, *::after": {
-          boxSizing: "border-box",
-          margin: 0,
-          padding: 0,
-        },
-
-        body: {
-          ...theme.fn.fontStyles(),
-          backgroundColor:
-            theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-          color:
-            theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-          lineHeight: theme.lineHeight,
-        },
-        header: {
-          backgroundColor:
-            theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-        },
-      })}
-    />
-  );
-}
+import "../../styles/globals.css";
 
 const Wrapper = styled("div")`
   position: relative;
@@ -53,13 +23,22 @@ const Wrapper = styled("div")`
   }
 `;
 const Layout = ({ children }: PageProps) => {
+  let darkTheme = false;
+
+  React.useEffect(function onFirstMount() {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    darkTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }, []);
+
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
-    defaultValue: "light",
+    defaultValue: darkTheme ? "dark" : "light",
   });
 
   const toggleColorScheme = (value?: ColorScheme) => {
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    const newTheme = value || (colorScheme === "dark" ? "light" : "dark");
+    document.documentElement.setAttribute("data-theme", newTheme);
+    setColorScheme(newTheme);
   };
   return (
     <ColorSchemeProvider
@@ -71,7 +50,6 @@ const Layout = ({ children }: PageProps) => {
         withGlobalStyles
         withNormalizeCSS
       >
-        <MyGlobalStyles />
         <Wrapper>{children}</Wrapper>
       </MantineProvider>
     </ColorSchemeProvider>
