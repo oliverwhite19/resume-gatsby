@@ -17,7 +17,7 @@ const Image = styled(StaticImage)`
   }
 `;
 
-const Header = ({ withDescription }: { withDescription: boolean }) => {
+const Header = ({ description }: { description?: string }) => {
   const { classes } = useStyles();
 
   const [opened, setOpened] = useState(false);
@@ -42,7 +42,7 @@ const Header = ({ withDescription }: { withDescription: boolean }) => {
           </H1>
           <ThemeSwitch />
         </div>
-        {withDescription && (
+        {description && (
           <>
             <div className={classes.buttonContainer}>
               <a
@@ -88,14 +88,7 @@ const Header = ({ withDescription }: { withDescription: boolean }) => {
                   height={84}
                 />
               </Avatar>
-              <P>
-                I am Oliver White and I am a Software Developer with 5 years of
-                experience leading and contributing to a wide variety of
-                projects. I have a degree in Computer Engineering with a
-                specialization in Software Engineering. I am experienced with
-                many different fields from computer hardware to cloud-based
-                software design!
-              </P>
+              <P>{description}</P>
             </div>
           </>
         )}

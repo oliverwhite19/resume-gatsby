@@ -1,19 +1,21 @@
 import * as React from "react";
 import { Resume } from "../components/Resume/Resume";
-import { graphql, PageProps, Script } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 
 type Mutable<Type> = {
   -readonly [Key in keyof Type]: Type[Key];
 };
 const IndexPage = ({ data }: PageProps<Queries.IndexPageQuery>) => {
+  console.log(data);
   return (
     <Resume
       employment={
-        data.allMongodbEmployment.nodes as Mutable<Queries.EmploymentFragment[]>
+        data.allPrismicEmployment.nodes as Mutable<Queries.EmploymentFragment[]>
       }
       education={
-        data.allMongodbEducation.nodes as Mutable<Queries.EducationFragment[]>
+        data.allPrismicEducation.nodes as Mutable<Queries.EducationFragment[]>
       }
+      description={data.prismicDescription?.data.details as string}
     />
   );
 };
@@ -34,41 +36,61 @@ export const Head = () => {
 export default IndexPage;
 export const query = graphql`
   query IndexPage {
-    allMongodbEmployment(
-      sort: { fields: positions___employment___positions___start, order: DESC }
-    ) {
+    allPrismicEmployment(sort: { fields: data___index, order: ASC }) {
       nodes {
         ...Employment
       }
     }
-    allMongodbEducation {
+    allPrismicEducation {
       nodes {
         ...Education
       }
     }
-  }
-
-  fragment Education on mongodbEducation {
-    end
-    description
-    link
-    title
-  }
-
-  fragment Position on mongodbPosition {
-    title
-    technologies
-    start
-    end
-    details
-  }
-
-  fragment Employment on mongodbEmployment {
-    positions {
-      ...Position
+    prismicDescription {
+      data {
+        details
+      }
     }
-    company
-    descriptor
-    companyLink
+  }
+
+  fragment Education on PrismicEducation {
+    data {
+      description
+      end
+      link
+      title
+    }
+  }
+
+  fragment Position on PrismicPosition {
+    data {
+      end
+      start
+      title
+      technologies {
+        technology
+      }
+      details {
+        detail
+      }
+    }
+  }
+
+  fragment Employment on PrismicEmployment {
+    data {
+      title
+      link
+      description
+      index
+      positions {
+        position {
+          document {
+            ... on PrismicPosition {
+              ...Position
+            }
+          }
+        }
+      }
+    }
   }
 `;

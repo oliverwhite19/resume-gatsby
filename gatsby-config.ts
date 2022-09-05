@@ -28,21 +28,6 @@ const config: GatsbyConfig = {
       __key: "pages",
     },
     {
-      resolve: "gatsby-source-mongodb",
-      options: {
-        dbName: process.env.DATABASE_NAME,
-        typePrefix: "",
-        connectionString: process.env.DATABASE_URL,
-        collection: ["Employment", "Position", "Education"],
-        extraParams: {
-          ssl: true,
-          authSource: "admin",
-          retryWrites: true,
-        },
-        preserveObjectIds: true,
-      },
-    },
-    {
       resolve: "gatsby-plugin-manifest",
       options: {
         name: "Oliver White Resume",
@@ -58,6 +43,14 @@ const config: GatsbyConfig = {
         // If you do not provide a crossOrigin option, it will skip CORS for manifest.
         // Any invalid keyword or empty string defaults to `anonymous`
         crossOrigin: `use-credentials`,
+      },
+    },
+    {
+      resolve: "gatsby-source-prismic",
+      options: {
+        repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+        accessToken: process.env.API_KEY,
+        customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
       },
     },
   ],

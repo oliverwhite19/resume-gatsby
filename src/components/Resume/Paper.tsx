@@ -13,7 +13,9 @@ interface Props {
   link: string;
   title: string;
   description: string;
-  positions?: Queries.PositionFragment[] | null;
+  positions?: Array<{
+    position: { document: Queries.PositionFragment };
+  }> | null;
 }
 
 const Paper = ({ link, title, description, positions }: Props) => {
@@ -29,7 +31,10 @@ const Paper = ({ link, title, description, positions }: Props) => {
       <CenteredP>{description}</CenteredP>
       <Space h="lg" />
       {positions?.map((position) => (
-        <Position key={position.title} position={position} />
+        <Position
+          key={position.position.document.data.title}
+          position={position.position.document}
+        />
       ))}
     </MPaper>
   );

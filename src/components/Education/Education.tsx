@@ -12,9 +12,9 @@ const Education = ({
       {education?.map((edu, index) => (
         <Paper
           key={index}
-          title={edu.title ?? ""}
-          description={edu.description ?? ""}
-          link={edu.link ?? ""}
+          title={edu.data.title ?? ""}
+          description={edu.data.description ?? ""}
+          link={edu.data.link ?? ""}
         />
       ))}
     </>

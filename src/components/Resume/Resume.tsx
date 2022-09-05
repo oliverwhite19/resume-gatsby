@@ -7,14 +7,16 @@ import { useStyles } from "./Resume.styles";
 const Resume = ({
   employment,
   education,
+  description,
 }: {
   employment: Queries.EmploymentFragment[];
   education: Queries.EducationFragment[];
+  description: string;
 }) => {
   const { classes } = useStyles();
   return (
     <>
-      <Header withDescription />
+      <Header description={description} />
       <section className={classes.section}>
         <WorkExperience employment={employment} />
       </section>

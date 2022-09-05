@@ -9,7 +9,7 @@ import { useMediaQuery } from "@mantine/hooks";
 
 const Position = ({ position }: { position: Queries.PositionFragment }) => {
   const { classes } = useStyles();
-  const { title, details, start, end, technologies } = position;
+  const { title, details, start, end, technologies } = position.data;
   const isSmallScreen = useMediaQuery(
     `(max-width: ${screenSizes.largeMobile}px)`
   );
@@ -23,7 +23,7 @@ const Position = ({ position }: { position: Queries.PositionFragment }) => {
       <Space h="lg" />
       <List icon={<Point size={16} strokeWidth={3} color={"#862d2e"} />}>
         {details?.map((detail, index) => (
-          <List.Item key={index}>{detail}</List.Item>
+          <List.Item key={index}>{detail?.detail}</List.Item>
         ))}
       </List>
       <Space h="lg" />
@@ -37,7 +37,7 @@ const Position = ({ position }: { position: Queries.PositionFragment }) => {
               key={index}
               size="xs"
             >
-              {tech}
+              {tech?.technology}
             </Chip>
           ))}
         </Chip.Group>
