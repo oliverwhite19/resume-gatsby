@@ -6,7 +6,6 @@ type Mutable<Type> = {
   -readonly [Key in keyof Type]: Type[Key];
 };
 const IndexPage = ({ data }: PageProps<Queries.IndexPageQuery>) => {
-  console.log(data);
   return (
     <Resume
       employment={
